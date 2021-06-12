@@ -9,5 +9,9 @@ import baltic.amadeus.task.data.entities.posts.Post
 
 @Dao
 interface PostDao {
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertData(data: List<Post>)
 
+    @Query("SELECT * FROM POSTS_TABLE ORDER BY id ASC")
+    fun readAllData(): LiveData<List<Post>>
 }
