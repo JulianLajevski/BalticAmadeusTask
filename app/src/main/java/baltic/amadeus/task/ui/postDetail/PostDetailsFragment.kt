@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import baltic.amadeus.task.R
 import baltic.amadeus.task.data.entities.postDetails.PostDetails
 import baltic.amadeus.task.utils.Resource
@@ -16,6 +17,7 @@ import kotlinx.android.synthetic.main.fragment_post_details.*
 
 class PostDetailsFragment : Fragment() {
 
+    private val args by navArgs<PostDetailsFragmentArgs>()
     private lateinit var detailsViewModel: PostDetailsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,8 +33,13 @@ class PostDetailsFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_post_details, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupObservers()
+    }
+
     private fun setupObservers(){
-        detailsViewModel.start(1)
+        detailsViewModel.start(args.result.userId)
         detailsViewModel.postDetails.observe(viewLifecycleOwner, Observer {
             when(it.status){
                 Resource.Status.SUCCESS -> {
@@ -49,6 +56,9 @@ class PostDetailsFragment : Fragment() {
     }
 
     private fun bindPost(postDetails: PostDetails){
+        userNameTextView.text = postDetails.name
+        postTitleTextView.text = args.result.title
+        postBodyTextView.text = args.result.body
     }
 
 }
