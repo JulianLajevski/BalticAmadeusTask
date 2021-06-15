@@ -61,10 +61,16 @@ class PostFragment : Fragment() {
         viewModel.posts.observe(viewLifecycleOwner, Observer {
             when (it.status) {
                 Resource.Status.SUCCESS -> {
+                    progress_bar.visibility = View.GONE
                     if (!it.data.isNullOrEmpty()) adapter.setItems(ArrayList(it.data))
                 }
                 Resource.Status.ERROR ->
                     Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+
+                Resource.Status.LOADING ->{
+                    progress_bar.visibility = View.VISIBLE
+                }
+
             }
         })
     }
