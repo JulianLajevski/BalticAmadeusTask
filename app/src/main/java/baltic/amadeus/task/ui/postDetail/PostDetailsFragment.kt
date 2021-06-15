@@ -11,7 +11,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import baltic.amadeus.task.R
 import baltic.amadeus.task.data.entities.postDetails.PostDetails
+import baltic.amadeus.task.utils.Constants
 import baltic.amadeus.task.utils.Resource
+import coil.load
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_post_details.*
 
@@ -61,6 +63,9 @@ class PostDetailsFragment : Fragment() {
         userNameTextView.text = postDetails.name
         postTitleTextView.text = args.result.title
         postBodyTextView.text = args.result.body
+        userPicture.load(Constants.IMAGE_URL + postDetails.id) {
+            crossfade(500)
+        }
     }
 
 }
