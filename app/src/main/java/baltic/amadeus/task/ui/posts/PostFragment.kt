@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import baltic.amadeus.task.R
 import baltic.amadeus.task.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,6 +39,17 @@ class PostFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
         setupObservers()
+        swipeRefreshLayout.setOnRefreshListener(refreshListener);
+    }
+
+    private val refreshListener = SwipeRefreshLayout.OnRefreshListener {
+        setupObservers()
+        Toast.makeText(
+            requireContext(),
+            "Refreshed!",
+            Toast.LENGTH_SHORT
+        ).show()
+        swipeRefreshLayout.isRefreshing = false
     }
 
     private fun setupRecyclerView() {
