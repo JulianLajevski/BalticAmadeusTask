@@ -16,5 +16,9 @@ interface PostDao {
     @Query("SELECT * FROM POSTS_TABLE ORDER BY id ASC")
     fun readAllData(): LiveData<List<Post>>
 
+    @Query("SELECT * FROM POST_DETAIL_TABLE WHERE id = :id")
+    fun getPostDetail(id: Int): LiveData<PostDetails>
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertPostDetail(data: PostDetails)
 }
