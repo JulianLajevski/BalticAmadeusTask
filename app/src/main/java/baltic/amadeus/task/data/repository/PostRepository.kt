@@ -14,4 +14,11 @@ class PostRepository @Inject constructor(
         networkCall = {apiRemoteDataSource.getPosts()},
         saveCallResult = {postDao.insertData(it)}
     )
+
+    fun getPostDetails(id: Int) = performGetOperation(
+            databaseQuery = {postDao.getPostDetail(id)},
+            networkCall = {apiRemoteDataSource.getPostDetail(id)},
+            saveCallResult = {postDao.insertPostDetail(it)}
+    )
+
 }
