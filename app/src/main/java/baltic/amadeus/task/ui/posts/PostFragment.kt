@@ -67,7 +67,7 @@ class PostFragment : Fragment() {
                 Resource.Status.ERROR ->
                     Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
 
-                Resource.Status.LOADING ->{
+                Resource.Status.LOADING -> {
                     progress_bar.visibility = View.VISIBLE
                 }
 
