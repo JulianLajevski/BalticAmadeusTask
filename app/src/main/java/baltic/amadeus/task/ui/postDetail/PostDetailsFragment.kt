@@ -1,11 +1,11 @@
 package baltic.amadeus.task.ui.postDetail
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
@@ -23,7 +23,8 @@ class PostDetailsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        detailsViewModel = ViewModelProvider(requireActivity()).get(PostDetailsViewModel::class.java)
+        detailsViewModel =
+            ViewModelProvider(requireActivity()).get(PostDetailsViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -39,12 +40,12 @@ class PostDetailsFragment : Fragment() {
         setupObservers()
     }
 
-    private fun setupObservers(){
+    private fun setupObservers() {
         detailsViewModel.start(args.result.userId)
         detailsViewModel.postDetails.observe(viewLifecycleOwner, Observer {
-            when(it.status){
+            when (it.status) {
                 Resource.Status.SUCCESS -> {
-                    bindPost(it.data!!)
+                    it.data?.let { it1 -> bindPost(it1) }
                 }
                 Resource.Status.ERROR -> {
                     Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
@@ -56,7 +57,7 @@ class PostDetailsFragment : Fragment() {
         })
     }
 
-    private fun bindPost(postDetails: PostDetails){
+    private fun bindPost(postDetails: PostDetails) {
         userNameTextView.text = postDetails.name
         postTitleTextView.text = args.result.title
         postBodyTextView.text = args.result.body

@@ -11,7 +11,7 @@ import baltic.amadeus.task.utils.Resource
 
 
 class PostDetailsViewModel @ViewModelInject constructor(
-        private val postRepository: PostRepository
+    private val postRepository: PostRepository
 ) : ViewModel() {
 
     private val _id = MutableLiveData<Int>()

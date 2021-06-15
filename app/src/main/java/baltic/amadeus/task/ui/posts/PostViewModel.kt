@@ -6,6 +6,6 @@ import baltic.amadeus.task.data.repository.PostRepository
 
 class PostViewModel @ViewModelInject constructor(
     private val repository: PostRepository
-): ViewModel(){
+) : ViewModel() {
     val posts = repository.getPosts()
 }

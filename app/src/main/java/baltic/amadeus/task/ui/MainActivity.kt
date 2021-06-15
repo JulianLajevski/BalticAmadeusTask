@@ -1,7 +1,7 @@
 package baltic.amadeus.task.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import baltic.amadeus.task.R
 import dagger.hilt.android.AndroidEntryPoint
 

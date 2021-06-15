@@ -1,12 +1,11 @@
 package baltic.amadeus.task.ui.posts
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,7 +18,7 @@ import kotlinx.android.synthetic.main.fragment_post.*
 class PostFragment : Fragment() {
 
     private lateinit var viewModel: PostViewModel
-    private lateinit var adapter: PostAdapter
+    private val adapter by lazy { PostAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,12 +40,12 @@ class PostFragment : Fragment() {
         setupObservers()
     }
 
-    private fun setupRecyclerView(){
+    private fun setupRecyclerView() {
         mainScreenRecyclerView.adapter = adapter
         mainScreenRecyclerView.layoutManager = LinearLayoutManager(requireContext())
     }
 
-    private fun setupObservers(){
+    private fun setupObservers() {
         viewModel.posts.observe(viewLifecycleOwner, Observer {
             when (it.status) {
                 Resource.Status.SUCCESS -> {
