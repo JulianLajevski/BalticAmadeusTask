@@ -4,10 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import baltic.amadeus.task.data.entities.postDetails.PostDetails
 import baltic.amadeus.task.data.entities.posts.Post
 import baltic.amadeus.task.utils.Constants.Companion.DATABASE_NAME
 
-@Database(entities = [Post::class], version = 1, exportSchema = false)
+@Database(entities = [Post::class, PostDetails::class], version = 1, exportSchema = false)
 abstract class AppDatabase: RoomDatabase() {
         abstract fun postDao(): PostDao
 
