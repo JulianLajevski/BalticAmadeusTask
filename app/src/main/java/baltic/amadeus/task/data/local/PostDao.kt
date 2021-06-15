@@ -15,4 +15,6 @@ interface PostDao {
 
     @Query("SELECT * FROM POSTS_TABLE ORDER BY id ASC")
     fun readAllData(): LiveData<List<Post>>
+
+
 }
