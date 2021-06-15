@@ -12,8 +12,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import baltic.amadeus.task.R
 import baltic.amadeus.task.utils.Resource
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_post.*
 
+@AndroidEntryPoint
 class PostFragment : Fragment() {
 
     private lateinit var viewModel: PostViewModel

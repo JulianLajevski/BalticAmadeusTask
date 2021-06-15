@@ -12,9 +12,10 @@ import androidx.navigation.fragment.navArgs
 import baltic.amadeus.task.R
 import baltic.amadeus.task.data.entities.postDetails.PostDetails
 import baltic.amadeus.task.utils.Resource
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_post_details.*
 
-
+@AndroidEntryPoint
 class PostDetailsFragment : Fragment() {
 
     private val args by navArgs<PostDetailsFragmentArgs>()
