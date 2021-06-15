@@ -5,6 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import baltic.amadeus.task.data.entities.postDetails.PostDetails
 import baltic.amadeus.task.data.entities.posts.Post
 
 @Dao
@@ -14,4 +15,10 @@ interface PostDao {
 
     @Query("SELECT * FROM POSTS_TABLE ORDER BY id ASC")
     fun readAllData(): LiveData<List<Post>>
+
+    @Query("SELECT * FROM POST_DETAIL_TABLE WHERE id = :id")
+    fun getPostDetail(id: Int): LiveData<PostDetails>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertPostDetail(data: PostDetails)
 }
