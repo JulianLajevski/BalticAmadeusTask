@@ -41,6 +41,9 @@ class PostDetailsFragment : Fragment() {
                 Resource.Status.ERROR -> {
                     Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
                 }
+                Resource.Status.LOADING -> {
+                    Toast.makeText(requireContext(), "Loading...", Toast.LENGTH_SHORT).show()
+                }
             }
         })
     }
