@@ -2,12 +2,11 @@ package baltic.amadeus.task.ui.posts
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import baltic.amadeus.task.data.entities.posts.Post
 import baltic.amadeus.task.databinding.ItemPostBinding
 
-class PostAdapter: RecyclerView.Adapter<PostAdapter.MyViewHolder>() {
+class PostAdapter : RecyclerView.Adapter<PostAdapter.MyViewHolder>() {
 
     private val items = ArrayList<Post>()
 
